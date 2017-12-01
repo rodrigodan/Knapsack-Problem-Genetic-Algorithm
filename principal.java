@@ -15,6 +15,8 @@ public class principal{
 		
 		Mochila bolsa[] = new Mochila[n];
 		
+		double pesoMaximo = entr.nextDouble();
+		
 		//insira os pesos na mochila:
 		
 		int i = 0;
@@ -22,12 +24,13 @@ public class principal{
 			bolsa[i]= new Mochila();
 			bolsa[i].value = entr.nextDouble();
 			bolsa[i].strength = entr.nextDouble();
+			bolsa[i].pesoMax = pesoMaximo;
 			System.out.println(bolsa[i].value);
 			System.out.println(bolsa[i].strength);
 			i++;
 		}
-		
-		GA meuGA = new GA(50,100,0.01,bolsa,n);
+		//tamanho da população 2*n
+		GA meuGA = new GA(50,50,0.05,bolsa,n,pesoMaximo);
 		meuGA.executa();
 	}
 }
